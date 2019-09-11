@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Pahala {
-    public string m_NamaPahala;
+public class Virtue {
+    public string m_Name;
     public int m_Rating;
 
-    public Pahala(string p_NamaPahala, int p_Rating) {
-        m_NamaPahala = p_NamaPahala;
+    public Virtue(string p_Name, int p_Rating) {
+        m_Name = p_Name;
         m_Rating = p_Rating;
     }
 }
