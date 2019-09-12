@@ -4,16 +4,18 @@ using UnityEngine;
 
 [System.Serializable]
 public class Villain {
+    public string m_ID;
     public string m_FirstName;
     public string m_LastName;
-    public char m_Gender;
+    public string m_Gender;
     public string m_Status;
     public string m_Job;
     public string m_Email;
     public string m_Country;
     public string m_CauseOfDeath;
 
-    public Villain(string p_FirstName, string p_LastName, char p_Gender, string p_Status, string p_Job, string p_Email, string p_Country, string p_CauseOfDeath) {
+    public Villain(string p_ID,string p_FirstName, string p_LastName, string p_Gender, string p_Status, string p_Job, string p_Email, string p_Country, string p_CauseOfDeath) {
+        m_ID = p_ID;
         m_FirstName = p_FirstName;
         m_LastName = p_LastName;
         m_Gender = p_Gender;
