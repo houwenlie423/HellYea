@@ -633,6 +633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 479224104}
   - component: {fileID: 479224103}
+  - component: {fileID: 479224105}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -712,6 +713,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &479224105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479224102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e4fc03cfd044e5799b7cf5cbab0d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DisplayTxt: {fileID: 1066367793}
+  m_WaitTime: 15
+  m_IsCountingDown: 0
 --- !u!1 &497874044
 GameObject:
   m_ObjectHideFlags: 0
@@ -3399,7 +3415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2025203637}
   m_Layer: 5
-  m_Name: Docs UI
+  m_Name: Text Indicators
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

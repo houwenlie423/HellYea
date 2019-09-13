@@ -218,6 +218,8 @@ public class Manager : MonoBehaviour{
             }
         }
 
+        TimerScript.Instance.f_Begin(); //Start counting down
+
         //DEVELOPER'S HELP
         t_Worthy = f_IsWorthy();
         t_TempCaste = f_DetermineCaste();
