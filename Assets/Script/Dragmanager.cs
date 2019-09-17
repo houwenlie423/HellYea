@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dragmanager : MonoBehaviour
+public class DragManager : MonoBehaviour
 {
-    public static Dragmanager m_Instance;
-    public GameObject m_CurrentObject;
-    public GameObject m_LastObject;
+    public static DragManager m_Instance;
 
-    private void Awake() {
+    void Awake() {
         m_Instance = this;
     }
     // Start is called before the first frame update
@@ -22,6 +20,4 @@ public class Dragmanager : MonoBehaviour
     {
         
     }
-
-    
 }

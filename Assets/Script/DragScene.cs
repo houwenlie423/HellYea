@@ -1,46 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class DragScene : MonoBehaviour {
     public Vector3 m_Offset;
     public Vector3 m_MousePosition;
     public Vector3 m_ObjectPosition;
-    public SpriteRenderer m_Bounds;
-    public SpriteRenderer m_ThisBounds;
+    public RectTransform m_Bounds;
+    public RectTransform m_ThisBounds;
     bool m_Drag;
     private void Start() {
-        m_ThisBounds = GetComponent<SpriteRenderer>();
-        m_Bounds = Dragmanager.m_Instance.GetComponent<SpriteRenderer>();
+        m_ThisBounds = GetComponent<RectTransform>();
+        m_Bounds = DragManager.m_Instance.GetComponent<RectTransform>();
     }
     private void OnMouseDown() {
-        m_Offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1 * (Camera.main.transform.position.z)));
-        m_Offset.z = -1f;
-        Dragmanager.m_Instance.m_CurrentObject = this.gameObject;
+        m_Offset = (Vector3)m_ThisBounds.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+        m_Offset.z = 0f;
+        /*Dragmanager.m_Instance.m_CurrentObject = this.gameObject;
         if(Dragmanager.m_Instance.m_LastObject != this.gameObject && Dragmanager.m_Instance.m_LastObject!=null) {
             Dragmanager.m_Instance.m_LastObject.transform.position = new Vector3(Dragmanager.m_Instance.m_LastObject.transform.position.x, Dragmanager.m_Instance.m_LastObject.transform.position.y, 0f);
-           
-        }
+        }*/
+        transform.SetAsLastSibling();
     }
 
     private void OnMouseDrag() {
-        m_MousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1 * (Camera.main.transform.position.z));
+        m_MousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
         m_ObjectPosition = Camera.main.ScreenToWorldPoint(m_MousePosition);
-        m_ObjectPosition.z = 0f;
-        transform.position = new Vector3(
-            Mathf.Clamp(m_ObjectPosition.x + m_Offset.x, 
-            (-(m_Bounds.bounds.size.x - m_ThisBounds.bounds.size.x) / 2) + m_Bounds.transform.position.x,
-            ((m_Bounds.bounds.size.x - m_ThisBounds.bounds.size.x) / 2) + m_Bounds.transform.position.x), 
-            Mathf.Clamp(m_ObjectPosition.y + m_Offset.y,
-            (-(m_Bounds.bounds.size.y - m_ThisBounds.bounds.size.y) / 2) + m_Bounds.transform.position.y,
-            ((m_Bounds.bounds.size.y - m_ThisBounds.bounds.size.y) / 2) + m_Bounds.transform.position.y), 
-            m_ObjectPosition.z + m_Offset.z
-            );
-    }
+        transform.position = m_ObjectPosition + m_Offset;
+        if ((m_ThisBounds.anchoredPosition.x + m_Offset.x) <= ((-(m_Bounds.sizeDelta.x - m_ThisBounds.sizeDelta.x) / 2))){
+            m_ThisBounds.anchoredPosition = new Vector3(((-(m_Bounds.sizeDelta.x - m_ThisBounds.sizeDelta.x) / 2)), m_ThisBounds.anchoredPosition.y, 0f);
+        }else if ((m_ThisBounds.anchoredPosition.x + m_Offset.x) >= (((m_Bounds.sizeDelta.x - m_ThisBounds.sizeDelta.x) / 2))) {
+            m_ThisBounds.anchoredPosition = new Vector3((((m_Bounds.sizeDelta.x - m_ThisBounds.sizeDelta.x) / 2)), m_ThisBounds.anchoredPosition.y, 0f);
+        }
 
-    private void OnMouseUp() {
-        Dragmanager.m_Instance.m_LastObject = this.gameObject;
+        if ((m_ThisBounds.anchoredPosition.y + m_Offset.y) >= (((m_Bounds.sizeDelta.y - m_ThisBounds.sizeDelta.y) / 2))) {
+            m_ThisBounds.anchoredPosition = new Vector3(m_ThisBounds.anchoredPosition.x, (((m_Bounds.sizeDelta.y - m_ThisBounds.sizeDelta.y) / 2)), 0f);
+        }else if ((m_ThisBounds.anchoredPosition.y + m_Offset.y) <= ((-(m_Bounds.sizeDelta.y - m_ThisBounds.sizeDelta.y) / 2))) {
+            m_ThisBounds.anchoredPosition = new Vector3(m_ThisBounds.anchoredPosition.x, ((-(m_Bounds.sizeDelta.y - m_ThisBounds.sizeDelta.y) / 2)), 0f);
+        }
     }
+    
     private void Update() {
       
     }
