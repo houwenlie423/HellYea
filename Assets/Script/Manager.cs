@@ -31,22 +31,29 @@ public class Manager : MonoBehaviour{
     public int m_PlayerScore;
 
     [Header("Interfaces")]
-    public Button m_StartBtn;
-    public GameObject m_InGameUI;
-    public TextMeshProUGUI m_TimerTxt;
-    public GameObject m_SpriteVillain;
-    public GameObject m_SpriteTable;
-    public Button m_DecideBtn;
-    public Button m_GuideBtn;
+    public GameObject m_EntireUI;
     public GameObject m_GuideBook;
-    public GameObject m_AcceptOrReject;
     public GameObject m_CasteChoices;
-    //JGN DIUBAH2 DLU
+    public GameObject m_Blackie;
+    public Button m_StartBtn;
+    public Button m_DecideBtn;
+    public Button m_AcceptBtn;
+    public Button m_RejectBtn;
+    public Button m_GuideBtn;
+    public Image m_VillainImg;
+    public Image m_TinyTableImg;
+    public Image m_FormCardImg;
+    public Image m_IDCardImg;
+    public Image m_VisaCardImg;
+    public Image m_StampImg;
+    public TextMeshProUGUI m_TimerTxt;
+    public TextMeshProUGUI m_JobsDoneTxt;
     public TextMeshProUGUI m_SinDocument;
     public TextMeshProUGUI m_VirtueDocument;
     public TextMeshProUGUI m_VillainIdentity;
-    public TextMeshProUGUI m_JobsDoneTxt;
-
+    public Sprite m_StampAccept;
+    public Sprite m_StampReject;
+    
 
     [Header("Developer Helps")]
     public string m_CorrectPlacement;
@@ -61,7 +68,6 @@ public class Manager : MonoBehaviour{
     private string[] t_StrLine, t_StrRow;
     private int t_I, t_Rand, t_Count;
     private bool t_Worthy;
-    private GameObject[] m_ObjArr = new GameObject[10];
 
     private void OnEnable() { Instance = this; }
 
@@ -74,7 +80,8 @@ public class Manager : MonoBehaviour{
 
         //Beginning UI
         m_StartBtn.gameObject.SetActive(true);
-        m_InGameUI.gameObject.SetActive(false);
+        m_EntireUI.gameObject.SetActive(false);
+
 
         f_Load("listPeople");
         f_Load("ListDosa");
@@ -126,21 +133,31 @@ public class Manager : MonoBehaviour{
     }
 
     private void f_ResetUI() {
-        m_InGameUI.gameObject.SetActive(true);
+
+        m_Blackie.gameObject.SetActive(false);
         m_StartBtn.gameObject.SetActive(false);
+        m_EntireUI.gameObject.SetActive(true);
         m_TimerTxt.gameObject.SetActive(true);
-        m_SpriteVillain.gameObject.SetActive(true);
-        m_SpriteTable.gameObject.SetActive(true);
+        m_VillainImg.gameObject.SetActive(true);
+        m_TinyTableImg.gameObject.SetActive(true);
         m_JobsDoneTxt.gameObject.SetActive(true);
         m_DecideBtn.gameObject.SetActive(true);
         m_SinDocument.gameObject.SetActive(true);
         m_VirtueDocument.gameObject.SetActive(true);
         m_VillainIdentity.gameObject.SetActive(true);
+        m_FormCardImg.gameObject.SetActive(true);
+        m_IDCardImg.gameObject.SetActive(true);
+        m_VisaCardImg.gameObject.SetActive(true);
         m_GuideBtn.gameObject.SetActive(true);
         m_GuideBook.gameObject.SetActive(false);
-        m_AcceptOrReject.gameObject.SetActive(false);
+        //m_AcceptBtn.gameObject.SetActive(false);
+        //m_RejectBtn.gameObject.SetActive(false);
+
         m_CasteChoices.gameObject.SetActive(false);
 
+
+        m_StampImg.enabled = false;
+        UIAnimController.Instance.f_ShowStamp(false);
 
         m_SinDocument.text = "";
         m_VirtueDocument.text = "";
@@ -154,13 +171,15 @@ public class Manager : MonoBehaviour{
 
     public void f_ToggleDecide() {
         //Decide Btn toggle
-        m_SinDocument.gameObject.SetActive(!m_SinDocument.gameObject.activeSelf);
-        m_VirtueDocument.gameObject.SetActive(!m_VirtueDocument.gameObject.activeSelf);
-        m_VillainIdentity.gameObject.SetActive(!m_VillainIdentity.gameObject.activeSelf);
-        m_AcceptOrReject.gameObject.SetActive(!m_AcceptOrReject.gameObject.activeSelf);
+
+        /*m_AcceptBtn.gameObject.SetActive(!m_AcceptBtn.gameObject.activeInHierarchy);
+        m_RejectBtn.gameObject.SetActive(!m_RejectBtn.gameObject.activeInHierarchy);*/
+        UIAnimController.Instance.f_ToggleStamp();
+     
     }
 
-    public void f_ToggleGuideBook() { m_GuideBook.gameObject.SetActive(!m_GuideBook.gameObject.activeSelf); }
+    //Toggle Guide Book
+    public void f_ToggleGuideBook() { m_GuideBook.gameObject.SetActive(!m_GuideBook.activeInHierarchy);}
 
     public void f_Generate() {
         f_ResetValues();
@@ -243,18 +262,25 @@ public class Manager : MonoBehaviour{
 
         if (t_Worthy == p_Submission) m_PlayerScore += 50;
 
+        UIAnimController.Instance.f_ShowStamp(false);
 
         if (p_Submission) { //SUBMIT ACCEPT
-            m_SinDocument.gameObject.SetActive(false);
-            m_VirtueDocument.gameObject.SetActive(false);
-            m_VillainIdentity.gameObject.SetActive(false);
+            m_StampImg.enabled = true;
+            m_StampImg.sprite = m_StampAccept;
+            m_Blackie.gameObject.SetActive(true);
             m_CasteChoices.gameObject.SetActive(true);
 
-        }else { //SUBMIT REJECT
+        }
+        else { //SUBMIT REJECT
+            m_StampImg.enabled = true;
+            m_StampImg.sprite = m_StampReject;
+
             m_JobsDone++;
             m_JobsDoneTxt.text = "Villains taken care of " + m_JobsDone;
             f_Generate();
         }
+
+       
 
     }
 
@@ -274,8 +300,6 @@ public class Manager : MonoBehaviour{
             }
 
         }
-
-
         m_JobsDone++;
         m_JobsDoneTxt.text = "Villains taken care of " + m_JobsDone;
         f_Generate();
