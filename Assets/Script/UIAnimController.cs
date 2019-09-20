@@ -7,6 +7,8 @@ public class UIAnimController : MonoBehaviour {
     public static UIAnimController Instance;
 
     public Animator m_StampEntrAnim;
+    public Animator m_AccAnim, m_RejAnim;
+
     private bool m_StampDisplayed;
    
 
@@ -25,4 +27,8 @@ public class UIAnimController : MonoBehaviour {
         m_StampEntrAnim.SetBool("IsDisplayed", m_StampDisplayed);
     }
 
+    public void f_Decide(bool p_Decision) {
+        if (p_Decision)         m_AccAnim.Play("AcceptAnim");
+        else                    m_RejAnim.Play("RejectAnim");
+    }
 }
