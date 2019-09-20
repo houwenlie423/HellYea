@@ -53,7 +53,10 @@ public class Manager : MonoBehaviour{
     public TextMeshProUGUI m_VillainIdentity;
     public Sprite m_StampAccept;
     public Sprite m_StampReject;
-    
+
+
+    [Header("Others")]
+    public Button m_NextBtn;
 
     [Header("Developer Helps")]
     public string m_CorrectPlacement;
@@ -150,11 +153,11 @@ public class Manager : MonoBehaviour{
         m_VisaCardImg.gameObject.SetActive(true);
         m_GuideBtn.gameObject.SetActive(true);
         m_GuideBook.gameObject.SetActive(false);
-        //m_AcceptBtn.gameObject.SetActive(false);
-        //m_RejectBtn.gameObject.SetActive(false);
-
+    
         m_CasteChoices.gameObject.SetActive(false);
 
+        //TEMPORARY, CHANGE THIS LINE OF CODE BELOW TO CALLING EXIT/ENTRANCE ANIMATION WITH f_Generate() ON IT'S LAST FRAME
+        m_NextBtn.interactable = false;
 
         m_StampImg.enabled = false;
         UIAnimController.Instance.f_ShowStamp(false);
@@ -167,16 +170,8 @@ public class Manager : MonoBehaviour{
 
     //====================================================================================================================================================================================================================================
 
-    public void f_StartGame() { f_Generate();}
-
-    public void f_ToggleDecide() {
-        //Decide Btn toggle
-
-        /*m_AcceptBtn.gameObject.SetActive(!m_AcceptBtn.gameObject.activeInHierarchy);
-        m_RejectBtn.gameObject.SetActive(!m_RejectBtn.gameObject.activeInHierarchy);*/
-        UIAnimController.Instance.f_ToggleStamp();
-     
-    }
+    //Toggle Decide
+    public void f_ToggleDecide() { UIAnimController.Instance.f_ToggleStamp(); }
 
     //Toggle Guide Book
     public void f_ToggleGuideBook() { m_GuideBook.gameObject.SetActive(!m_GuideBook.activeInHierarchy);}
@@ -253,35 +248,32 @@ public class Manager : MonoBehaviour{
 
     }
 
-    public void f_ChkAcceptance(bool p_Submission) {
+    public void f_ChkAcceptance(bool p_Submission) { //BUTTON Accept & BUTTON Reject, things r handled in their animation events
         //t_Worthy = f_IsWorthy(); alr done above. Uncomment this once DEVELOPER'S HELP is no longer needed
 
-        m_SinDocument.text = "";
-        m_VirtueDocument.text = "";
-        m_VillainIdentity.text = "";
-
         if (t_Worthy == p_Submission) m_PlayerScore += 50;
+        UIAnimController.Instance.f_Decide(p_Submission);
 
-        UIAnimController.Instance.f_ShowStamp(false);
+    }
 
-        if (p_Submission) { //SUBMIT ACCEPT
-            m_StampImg.enabled = true;
-            m_StampImg.sprite = m_StampAccept;
+    //USED IN EVENT
+    public void f_SubmitAns(bool p_Accept) {
+        if(p_Accept) {
             m_Blackie.gameObject.SetActive(true);
             m_CasteChoices.gameObject.SetActive(true);
-
-        }
-        else { //SUBMIT REJECT
-            m_StampImg.enabled = true;
-            m_StampImg.sprite = m_StampReject;
-
+        }else {
             m_JobsDone++;
             m_JobsDoneTxt.text = "Villains taken care of " + m_JobsDone;
-            f_Generate();
+
+
+            //TEMPORARY, CHANGE THIS LINE OF CODE BELOW TO CALLING EXIT/ENTRANCE ANIMATION WITH f_Generate() ON IT'S LAST FRAME
+            m_NextBtn.interactable = true;
+
+            //DO THESE FOLLOWING CODES AFTER ANIMATION IS OVER
+            m_SinDocument.text = "";
+            m_VirtueDocument.text = "";
+            m_VillainIdentity.text = "";
         }
-
-       
-
     }
 
     public void f_ChkCaste(int p_Submission) {
@@ -302,7 +294,15 @@ public class Manager : MonoBehaviour{
         }
         m_JobsDone++;
         m_JobsDoneTxt.text = "Villains taken care of " + m_JobsDone;
-        f_Generate();
+
+
+        //TEMPORARY, CHANGE THIS LINE OF CODE BELOW TO CALLING EXIT/ENTRANCE ANIMATION WITH f_Generate() ON IT'S LAST FRAME
+        m_NextBtn.interactable = true;
+
+        //DO THESE FOLLOWING CODES AFTER ANIMATION IS OVER
+        m_SinDocument.text = "";
+        m_VirtueDocument.text = "";
+        m_VillainIdentity.text = "";
     }
 
 }
