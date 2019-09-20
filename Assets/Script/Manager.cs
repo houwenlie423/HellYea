@@ -32,6 +32,7 @@ public class Manager : MonoBehaviour{
 
     [Header("Interfaces")]
     public GameObject m_EntireUI;
+    public GameObject m_TableUI;
     public GameObject m_GuideBook;
     public GameObject m_CasteChoices;
     public GameObject m_Blackie;
@@ -84,7 +85,7 @@ public class Manager : MonoBehaviour{
         //Beginning UI
         m_StartBtn.gameObject.SetActive(true);
         m_EntireUI.gameObject.SetActive(false);
-
+        m_TableUI.gameObject.SetActive(false);
 
         f_Load("listPeople");
         f_Load("ListDosa");
@@ -140,6 +141,7 @@ public class Manager : MonoBehaviour{
         m_Blackie.gameObject.SetActive(false);
         m_StartBtn.gameObject.SetActive(false);
         m_EntireUI.gameObject.SetActive(true);
+        m_TableUI.gameObject.SetActive(true);
         m_TimerTxt.gameObject.SetActive(true);
         m_VillainImg.gameObject.SetActive(true);
         m_TinyTableImg.gameObject.SetActive(true);
