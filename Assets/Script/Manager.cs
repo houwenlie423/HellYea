@@ -47,6 +47,11 @@ public class Manager : MonoBehaviour{
     public Image m_IDCardImg;
     public Image m_VisaCardImg;
     public Image m_StampImg;
+    public Image m_BayanganImg;
+    public Image m_TembokImg;
+    public Image m_TopWallImg;
+    public Image m_Meja2Img;
+    public Image m_Meja3Img;
     public TextMeshProUGUI m_TimerTxt;
     public TextMeshProUGUI m_JobsDoneTxt;
     public TextMeshProUGUI m_SinDocument;
@@ -153,6 +158,11 @@ public class Manager : MonoBehaviour{
         m_FormCardImg.gameObject.SetActive(true);
         m_IDCardImg.gameObject.SetActive(true);
         m_VisaCardImg.gameObject.SetActive(true);
+        m_BayanganImg.gameObject.SetActive(true);
+        m_TembokImg.gameObject.SetActive(true); 
+        m_TopWallImg.gameObject.SetActive(true); 
+        m_Meja2Img.gameObject.SetActive(true); 
+        m_Meja3Img.gameObject.SetActive(true); 
         m_GuideBtn.gameObject.SetActive(true);
         m_GuideBook.gameObject.SetActive(false);
     
