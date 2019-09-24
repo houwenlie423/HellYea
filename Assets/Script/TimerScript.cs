@@ -40,8 +40,9 @@ public class TimerScript : MonoBehaviour {
             if (m_CurrentTime <= 10) m_DisplayTxt.color = Color.red;
 
             if (m_CurrentTime <= 0) {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 m_CurrentTime = 0;
+                UIAnimController.Instance.f_ShowJeruji(false);
             }
         }
     }

@@ -52,6 +52,10 @@ public class Manager : MonoBehaviour{
     public Image m_TopWallImg;
     public Image m_Meja2Img;
     public Image m_Meja3Img;
+    public Image m_LargeTableImg;
+    public Image m_SmallFormImg;
+    public Image m_SmallIDImg;
+    public Image m_SmallVisaImg;
     public TextMeshProUGUI m_TimerTxt;
     public TextMeshProUGUI m_JobsDoneTxt;
     public TextMeshProUGUI m_SinDocument;
@@ -78,10 +82,10 @@ public class Manager : MonoBehaviour{
     private int t_I, t_Rand, t_Count;
     private bool t_Worthy;
 
-    private void OnEnable() { Instance = this; }
+    private void OnEnable() { 
+        Instance = this;
 
 
-    private void Start() {
         m_PlayerScore = 0;
         m_JobsDone = 0;
         m_JobsDoneTxt.text = "Villains taken care of " + m_JobsDone;
@@ -91,7 +95,10 @@ public class Manager : MonoBehaviour{
         m_StartBtn.gameObject.SetActive(true);
         m_EntireUI.gameObject.SetActive(false);
         m_TableUI.gameObject.SetActive(false);
+    }
 
+
+    private void Start() {
         f_Load("listPeople");
         f_Load("ListDosa");
         f_Load("ListPahala");
@@ -162,7 +169,10 @@ public class Manager : MonoBehaviour{
         m_TembokImg.gameObject.SetActive(true); 
         m_TopWallImg.gameObject.SetActive(true); 
         m_Meja2Img.gameObject.SetActive(true); 
-        m_Meja3Img.gameObject.SetActive(true); 
+        m_Meja3Img.gameObject.SetActive(true);
+        m_SmallFormImg.gameObject.SetActive(true);
+        m_SmallIDImg.gameObject.SetActive(true);
+        m_SmallVisaImg.gameObject.SetActive(true);
         m_GuideBtn.gameObject.SetActive(true);
         m_GuideBook.gameObject.SetActive(false);
     
@@ -181,6 +191,20 @@ public class Manager : MonoBehaviour{
 
 
     //====================================================================================================================================================================================================================================
+
+    //Start button
+    public void f_StartStage() {
+        m_EntireUI.gameObject.SetActive(true);
+        m_LargeTableImg.gameObject.SetActive(true);
+        m_FormCardImg.gameObject.SetActive(false);
+        m_IDCardImg.gameObject.SetActive(false);
+        m_VisaCardImg.gameObject.SetActive(false);
+        m_SmallFormImg.gameObject.SetActive(false);
+        m_SmallIDImg.gameObject.SetActive(false);
+        m_SmallVisaImg.gameObject.SetActive(false);
+
+        UIAnimController.Instance.f_ShowJeruji(true); 
+    }
 
     //Toggle Decide
     public void f_ToggleDecide() { UIAnimController.Instance.f_ToggleStamp(); }

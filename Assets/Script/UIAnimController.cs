@@ -8,6 +8,7 @@ public class UIAnimController : MonoBehaviour {
 
     public Animator m_StampEntrAnim;
     public Animator m_AccAnim, m_RejAnim;
+    public Animator m_JerujiAnim;
 
     private bool m_StampDisplayed;
    
@@ -31,4 +32,6 @@ public class UIAnimController : MonoBehaviour {
         if (p_Decision)         m_AccAnim.Play("AcceptAnim");
         else                    m_RejAnim.Play("RejectAnim");
     }
+
+    public void f_ShowJeruji(bool p_IsStageRunning) { m_JerujiAnim.Play(p_IsStageRunning ? "JerujiExit" : "JerujiEntrance"); }
 }
