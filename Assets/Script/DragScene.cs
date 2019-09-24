@@ -8,7 +8,7 @@ public class DragScene : MonoBehaviour {
     public Vector3 m_ObjectPosition;
     public RectTransform m_Bounds;
     public RectTransform m_ThisBounds;
-    bool m_Drag;
+    public bool m_Drag;
     private void Start() {
         m_ThisBounds = GetComponent<RectTransform>();
         m_Bounds = DragManager.m_Instance.GetComponent<RectTransform>();
@@ -20,6 +20,7 @@ public class DragScene : MonoBehaviour {
         if(Dragmanager.m_Instance.m_LastObject != this.gameObject && Dragmanager.m_Instance.m_LastObject!=null) {
             Dragmanager.m_Instance.m_LastObject.transform.position = new Vector3(Dragmanager.m_Instance.m_LastObject.transform.position.x, Dragmanager.m_Instance.m_LastObject.transform.position.y, 0f);
         }*/
+        m_Drag = true;
         transform.SetAsLastSibling();
     }
 
@@ -39,7 +40,11 @@ public class DragScene : MonoBehaviour {
             m_ThisBounds.anchoredPosition = new Vector3(m_ThisBounds.anchoredPosition.x, ((-(m_Bounds.sizeDelta.y - m_ThisBounds.sizeDelta.y) / 2)), 0f);
         }
     }
-    
+
+    private void OnMouseUp() {
+        m_Drag = false;
+    }
+
     private void Update() {
       
     }

@@ -22,6 +22,9 @@ public class ChildDrag : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if(m_OriginalPosition.transform.GetSiblingIndex() == m_LargeTable.childCount - 1) {
+            transform.SetAsLastSibling();
+        }
         m_PositionX = f_GetPos(m_OriginalPosition.localPosition.x, m_SmallTable.sizeDelta.x, m_LargeTable.sizeDelta.x);
         m_PositionY = f_GetPos(m_OriginalPosition.localPosition.y, m_SmallTable.sizeDelta.y, m_LargeTable.sizeDelta.y);
         transform.localPosition = new Vector3(m_PositionX, m_PositionY, 0f);
