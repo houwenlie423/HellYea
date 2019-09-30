@@ -35,13 +35,13 @@ public class Manager : MonoBehaviour{
     public GameObject m_TableUI;
     public GameObject m_GuideBook;
     public GameObject m_CasteChoices;
+    public GameObject m_VillainRepresentation;
     public GameObject m_Blackie;
     public Button m_StartBtn;
     public Button m_DecideBtn;
     public Button m_AcceptBtn;
     public Button m_RejectBtn;
     public Button m_GuideBtn;
-    public Image m_VillainImg;
     public Image m_TinyTableImg;
     public Image m_FormCardImg;
     public Image m_IDCardImg;
@@ -155,7 +155,7 @@ public class Manager : MonoBehaviour{
         m_EntireUI.gameObject.SetActive(true);
         m_TableUI.gameObject.SetActive(true);
         m_TimerTxt.gameObject.SetActive(true);
-        m_VillainImg.gameObject.SetActive(true);
+        m_VillainRepresentation.gameObject.SetActive(true);
         m_TinyTableImg.gameObject.SetActive(true);
         m_JobsDoneTxt.gameObject.SetActive(true);
         m_DecideBtn.gameObject.SetActive(true);
@@ -202,6 +202,7 @@ public class Manager : MonoBehaviour{
         m_SmallFormImg.gameObject.SetActive(false);
         m_SmallIDImg.gameObject.SetActive(false);
         m_SmallVisaImg.gameObject.SetActive(false);
+        m_StartBtn.gameObject.SetActive(false);
 
         UIAnimController.Instance.f_ShowJeruji(true); 
     }
@@ -213,6 +214,7 @@ public class Manager : MonoBehaviour{
     public void f_ToggleGuideBook() { m_GuideBook.gameObject.SetActive(!m_GuideBook.activeInHierarchy);}
 
     public void f_Generate() {
+        CharacterRandomizer.Instance.f_GenerateCharacter();
         f_ResetValues();
         f_ResetUI();
 
