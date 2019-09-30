@@ -5,7 +5,6 @@ using UnityEngine;
 public class DragManager : MonoBehaviour
 {
     public static DragManager m_Instance;
-   
 
     void Awake() {
         m_Instance = this;
