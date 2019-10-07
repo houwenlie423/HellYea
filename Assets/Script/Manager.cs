@@ -317,6 +317,9 @@ public class Manager : MonoBehaviour{
     public void f_ChkCaste(int p_Submission) {
         //t_TempCaste = f_DetermineCaste(); alr done above. Uncomment this once DEVELOPER'S HELP is no longer needed
 
+        m_Blackie.gameObject.SetActive(false);
+        m_CasteChoices.gameObject.SetActive(false);
+
         if (t_TempCaste != null) {
             m_CorrectCaste = t_TempCaste.m_CasteName;
             m_CorrectCasteLevel = t_TempCaste.m_CasteLevel;

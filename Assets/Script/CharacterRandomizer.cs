@@ -21,7 +21,7 @@ public class CharacterRandomizer : MonoBehaviour {
     private void OnEnable() { Instance = this; }
 
     public void f_GenerateCharacter() {
-        //m_HairImg.sprite = m_HairList[Random.Range(0, m_HairList.Length)];
+        m_HairImg.sprite = m_HairList[Random.Range(0, m_HairList.Length)];
         m_FaceImg.sprite = m_FaceList[Random.Range(0, m_FaceList.Length)];
         m_NeckImg.sprite = m_NeckList[Random.Range(0, m_NeckList.Length)];
         m_BodyImg.sprite = m_BodyList[Random.Range(0, m_BodyList.Length)];
