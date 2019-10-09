@@ -1070,7 +1070,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 479224104}
-  - component: {fileID: 479224106}
   - component: {fileID: 479224103}
   - component: {fileID: 479224105}
   m_Layer: 0
@@ -1153,6 +1152,10 @@ MonoBehaviour:
   m_VillainIdentity: {fileID: 725478921}
   m_StampAccept: {fileID: 21300000, guid: 53346153cbd8f45df85fe0c39406ddbf, type: 3}
   m_StampReject: {fileID: 21300000, guid: f90944083d3c9406792abd85900a8e3d, type: 3}
+  m_CardDrags:
+  - {fileID: 1542083311}
+  - {fileID: 800528629}
+  - {fileID: 2025848667}
   m_NextBtn: {fileID: 2069070411}
   m_CorrectPlacement: 
   m_CorrectCaste: 
@@ -1186,46 +1189,6 @@ MonoBehaviour:
   m_DisplayTxt: {fileID: 1066367793}
   m_WaitTime: 300
   m_IsCountingDown: 0
---- !u!114 &479224106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479224102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0577b7f231994a8e8b205881c8b6f75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HairImg: {fileID: 1433267127}
-  m_FaceImg: {fileID: 881768448}
-  m_NeckImg: {fileID: 1622484163}
-  m_BodyImg: {fileID: 1675406825}
-  m_HairList:
-  - {fileID: 21300000, guid: 9df217fb61e8e447dbff0b52c87fce53, type: 3}
-  - {fileID: 21300000, guid: f330c744092064547a351dd1f25d4f79, type: 3}
-  - {fileID: 21300000, guid: 56b88023deedc4d83a78ba8068687544, type: 3}
-  - {fileID: 21300000, guid: a07a7d43fb1fa455882c3d4e79e1ea45, type: 3}
-  - {fileID: 21300000, guid: 97dcc824e20e4487b808ed1d598672d0, type: 3}
-  m_FaceList:
-  - {fileID: 21300000, guid: 550c27fbff79346baab4b47930759da5, type: 3}
-  - {fileID: 21300000, guid: 15256f7d015384041a9bb479a57c7875, type: 3}
-  - {fileID: 21300000, guid: c4f44b098ea38406891318bf5ac365cc, type: 3}
-  - {fileID: 21300000, guid: a076fa828206148258dee84677c65c4c, type: 3}
-  - {fileID: 21300000, guid: 72648d9b1d64e46f9b1ce23ed1e11f39, type: 3}
-  m_NeckList:
-  - {fileID: 21300000, guid: 91b0533c47cca4d84a75f0e281d692d0, type: 3}
-  - {fileID: 21300000, guid: 815606eb070714ba996750fe0fc5fe84, type: 3}
-  - {fileID: 21300000, guid: 021313a067c39405094955766475c30f, type: 3}
-  - {fileID: 21300000, guid: 5b558f2ad1d684fbd86082531209202d, type: 3}
-  - {fileID: 21300000, guid: 4db90e96c87ed4704aaa5087e4d1ab5f, type: 3}
-  m_BodyList:
-  - {fileID: 21300000, guid: acfb4a3fe8c924404b69d63499ac36bc, type: 3}
-  - {fileID: 21300000, guid: 7bc2f45ff019b42b683f5bca4e662258, type: 3}
-  - {fileID: 21300000, guid: f02e188075562416c9f161280a31601f, type: 3}
-  - {fileID: 21300000, guid: 642b0ee2d52bc475eb6aa134d24c5b73, type: 3}
-  - {fileID: 21300000, guid: d5f618440f1c54eb58fe11f3ba5c2dba, type: 3}
 --- !u!1 &497874044
 GameObject:
   m_ObjectHideFlags: 0
@@ -2832,6 +2795,7 @@ MonoBehaviour:
   m_AccAnim: {fileID: 916698575}
   m_RejAnim: {fileID: 57497270}
   m_JerujiAnim: {fileID: 1773027579}
+  m_VillainSprAnim: {fileID: 1293855790}
 --- !u!1 &935467970
 GameObject:
   m_ObjectHideFlags: 0
@@ -3592,6 +3556,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1293855789}
   - component: {fileID: 1293855791}
+  - component: {fileID: 1293855790}
+  - component: {fileID: 1293855792}
   m_Layer: 5
   m_Name: Villain Representation
   m_TagString: Untagged
@@ -3622,6 +3588,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -14}
   m_SizeDelta: {x: 450, y: 600}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!95 &1293855790
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293855788}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 94a5deb8a8c29482caa79c15936e0d83, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!222 &1293855791
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3630,6 +3615,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293855788}
   m_CullTransparentMesh: 0
+--- !u!114 &1293855792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293855788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f999a914d846470e93fd15ff04c0622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HairImg: {fileID: 1433267127}
+  m_FaceImg: {fileID: 881768448}
+  m_NeckImg: {fileID: 1622484163}
+  m_BodyImg: {fileID: 1675406825}
+  m_HairList:
+  - {fileID: 21300000, guid: 9df217fb61e8e447dbff0b52c87fce53, type: 3}
+  - {fileID: 21300000, guid: f330c744092064547a351dd1f25d4f79, type: 3}
+  - {fileID: 21300000, guid: 56b88023deedc4d83a78ba8068687544, type: 3}
+  - {fileID: 21300000, guid: a07a7d43fb1fa455882c3d4e79e1ea45, type: 3}
+  - {fileID: 21300000, guid: 97dcc824e20e4487b808ed1d598672d0, type: 3}
+  m_FaceList:
+  - {fileID: 21300000, guid: 550c27fbff79346baab4b47930759da5, type: 3}
+  - {fileID: 21300000, guid: 15256f7d015384041a9bb479a57c7875, type: 3}
+  - {fileID: 21300000, guid: c4f44b098ea38406891318bf5ac365cc, type: 3}
+  - {fileID: 21300000, guid: a076fa828206148258dee84677c65c4c, type: 3}
+  - {fileID: 21300000, guid: 72648d9b1d64e46f9b1ce23ed1e11f39, type: 3}
+  m_NeckList:
+  - {fileID: 21300000, guid: 91b0533c47cca4d84a75f0e281d692d0, type: 3}
+  - {fileID: 21300000, guid: 815606eb070714ba996750fe0fc5fe84, type: 3}
+  - {fileID: 21300000, guid: 021313a067c39405094955766475c30f, type: 3}
+  - {fileID: 21300000, guid: 5b558f2ad1d684fbd86082531209202d, type: 3}
+  - {fileID: 21300000, guid: 4db90e96c87ed4704aaa5087e4d1ab5f, type: 3}
+  m_BodyList:
+  - {fileID: 21300000, guid: acfb4a3fe8c924404b69d63499ac36bc, type: 3}
+  - {fileID: 21300000, guid: 7bc2f45ff019b42b683f5bca4e662258, type: 3}
+  - {fileID: 21300000, guid: f02e188075562416c9f161280a31601f, type: 3}
+  - {fileID: 21300000, guid: 642b0ee2d52bc475eb6aa134d24c5b73, type: 3}
+  - {fileID: 21300000, guid: d5f618440f1c54eb58fe11f3ba5c2dba, type: 3}
 --- !u!1 &1428658103
 GameObject:
   m_ObjectHideFlags: 0

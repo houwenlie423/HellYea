@@ -63,7 +63,7 @@ public class Manager : MonoBehaviour{
     public TextMeshProUGUI m_VillainIdentity;
     public Sprite m_StampAccept;
     public Sprite m_StampReject;
-
+    public DragScene[] m_CardDrags;
 
     [Header("Others")]
     public Button m_NextBtn;
@@ -95,6 +95,8 @@ public class Manager : MonoBehaviour{
         m_StartBtn.gameObject.SetActive(true);
         m_EntireUI.gameObject.SetActive(false);
         m_TableUI.gameObject.SetActive(false);
+
+        TimerScript.Instance.f_Begin(); //Start counting down
     }
 
 
@@ -103,6 +105,9 @@ public class Manager : MonoBehaviour{
         f_Load("ListDosa");
         f_Load("ListPahala");
     }
+
+    //====================================================================================================================================================================================================================================
+
 
 
     private void f_Load(string p_FileName) {
@@ -214,7 +219,7 @@ public class Manager : MonoBehaviour{
     public void f_ToggleGuideBook() { m_GuideBook.gameObject.SetActive(!m_GuideBook.activeInHierarchy);}
 
     public void f_Generate() {
-        CharacterRandomizer.Instance.f_GenerateCharacter();
+        //CharacterRandomizer.Instance.f_GenerateCharacter();
         f_ResetValues();
         f_ResetUI();
 
@@ -270,8 +275,6 @@ public class Manager : MonoBehaviour{
             }
         }
 
-        TimerScript.Instance.f_Begin(); //Start counting down
-
         //DEVELOPER'S HELP
         t_Worthy = f_IsWorthy();
         t_TempCaste = f_DetermineCaste();
@@ -302,15 +305,7 @@ public class Manager : MonoBehaviour{
         }else {
             m_JobsDone++;
             m_JobsDoneTxt.text = "Villains taken care of " + m_JobsDone;
-
-
-            //TEMPORARY, CHANGE THIS LINE OF CODE BELOW TO CALLING EXIT/ENTRANCE ANIMATION WITH f_Generate() ON IT'S LAST FRAME
-            m_NextBtn.interactable = true;
-
-            //DO THESE FOLLOWING CODES AFTER ANIMATION IS OVER
-            m_SinDocument.text = "";
-            m_VirtueDocument.text = "";
-            m_VillainIdentity.text = "";
+            UIAnimController.Instance.f_PlayVillainAnim(false);
         }
     }
 
@@ -336,14 +331,19 @@ public class Manager : MonoBehaviour{
         m_JobsDone++;
         m_JobsDoneTxt.text = "Villains taken care of " + m_JobsDone;
 
+        UIAnimController.Instance.f_PlayVillainAnim(false);
+    }
 
-        //TEMPORARY, CHANGE THIS LINE OF CODE BELOW TO CALLING EXIT/ENTRANCE ANIMATION WITH f_Generate() ON IT'S LAST FRAME
+    public void f_ResetCards() {
+
+        for (t_I = 0; t_I < m_CardDrags.Length; t_I++) m_CardDrags[t_I].f_ResetPosition();
+
         m_NextBtn.interactable = true;
-
-        //DO THESE FOLLOWING CODES AFTER ANIMATION IS OVER
         m_SinDocument.text = "";
         m_VirtueDocument.text = "";
         m_VillainIdentity.text = "";
+        m_StampImg.enabled = false;
+
     }
 
 }

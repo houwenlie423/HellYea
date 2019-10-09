@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class DragScene : MonoBehaviour {
+
+
     public Vector3 m_Offset;
     public Vector3 m_MousePosition;
     public Vector3 m_ObjectPosition;
     public RectTransform m_Bounds;
     public RectTransform m_ThisBounds;
+
+
+    private Vector3 t_OriginalPosition;
+
     private void Start() {
         m_ThisBounds = GetComponent<RectTransform>();
         m_Bounds = DragManager.m_Instance.GetComponent<RectTransform>();
+
+        t_OriginalPosition = transform.position;
     }
     private void OnMouseDown() {
         m_Offset = (Vector3)m_ThisBounds.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
@@ -39,7 +47,5 @@ public class DragScene : MonoBehaviour {
         }
     }
     
-    private void Update() {
-      
-    }
+    public void f_ResetPosition() { transform.position = t_OriginalPosition; }
 }

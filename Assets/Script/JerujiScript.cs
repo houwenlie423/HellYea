@@ -13,6 +13,30 @@ public class JerujiScript : MonoBehaviour{
        
     }
 
-    public void f_StageStart() { Manager.Instance.f_Generate(); }
+    public void f_StageStart() { UIAnimController.Instance.f_PlayVillainAnim(true); }
     public void f_StageOver() { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
+
+    /*
+     * 1. Start Button
+     * 2. Jeruji Exit
+     * 3. Randomize Character (set active false)
+     * 4. Villain Entrance
+     * 5. f_Generate()
+     * 6. Game
+     * 7. IF submit ans = accept
+     *      - Choose caste
+     *      - Villain Exit
+     *      - Randomize Character (setactive false)
+     *      - Villain Entrance
+     *  
+     *   ELSE 
+     *      - Villain Exit
+     *      - Randomize Character (setactive false)
+     *      - Villain Entrance
+     * 
+     * 8. IF Time is up
+     *      - Jeruji Entrance
+     *      - Reload Scene   
+     * 
+     * */
 }

@@ -48,7 +48,13 @@ public class TimerScript : MonoBehaviour {
     }
 
     public void f_Begin() { m_IsCountingDown = true; }
+   
     private string f_DisplayTimer(int p_Hour, int p_Minute, int p_Second) { return p_Hour.ToString("00") + ":" + p_Minute.ToString("00") + ":" + p_Second.ToString("00"); }
+
+    public bool f_TimesUp() {
+        if (m_CurrentTime <= 0) return true;
+        return false;
+    }
 
 
     /*
