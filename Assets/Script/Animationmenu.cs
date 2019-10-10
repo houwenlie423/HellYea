@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Animationmenu : MonoBehaviour
 {
@@ -23,5 +24,9 @@ public class Animationmenu : MonoBehaviour
     public void f_Test() {
 
         m_Object.SetActive(true);
+    }
+
+    public void f_ChangeScene() {
+        SceneManager.LoadSceneAsync("SampleScene");
     }
 }
