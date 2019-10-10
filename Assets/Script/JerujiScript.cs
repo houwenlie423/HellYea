@@ -13,7 +13,7 @@ public class JerujiScript : MonoBehaviour{
        
     }
 
-    public void f_StageStart() { UIAnimController.Instance.f_PlayVillainAnim(true); }
+    public void f_StageStart() { UIAnimController.Instance.f_VillainEntranceAnim(); }
     public void f_StageOver() { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
 
     /*
@@ -25,12 +25,18 @@ public class JerujiScript : MonoBehaviour{
      * 6. Game
      * 7. IF submit ans = accept
      *      - Choose caste
-     *      - Villain Exit
+     *      - TO HELL
+     *      - Open HELL DOOR
+     *      - Character Fade Out   
+     *      - Close HELL DOOR
      *      - Randomize Character (setactive false)
      *      - Villain Entrance
      *  
      *   ELSE 
-     *      - Villain Exit
+     *      - To HEAVEN
+     *      - Open HEAVEN Door
+     *      - Character Fade Out   
+     *      - Close Heaven DOOR
      *      - Randomize Character (setactive false)
      *      - Villain Entrance
      * 

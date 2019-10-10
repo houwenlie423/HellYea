@@ -305,7 +305,8 @@ public class Manager : MonoBehaviour{
         }else {
             m_JobsDone++;
             m_JobsDoneTxt.text = "Villains taken care of " + m_JobsDone;
-            UIAnimController.Instance.f_PlayVillainAnim(false);
+            //UIAnimController.Instance.f_PlayVillainAnim(false);
+            UIAnimController.Instance.f_MoveVillain("To Heaven");
         }
     }
 
@@ -331,7 +332,8 @@ public class Manager : MonoBehaviour{
         m_JobsDone++;
         m_JobsDoneTxt.text = "Villains taken care of " + m_JobsDone;
 
-        UIAnimController.Instance.f_PlayVillainAnim(false);
+        //UIAnimController.Instance.f_PlayVillainAnim(false);
+        UIAnimController.Instance.f_MoveVillain("To Hell");
     }
 
     public void f_ResetCards() {
