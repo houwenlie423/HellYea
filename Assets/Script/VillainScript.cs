@@ -16,6 +16,7 @@ public class VillainScript : MonoBehaviour {
     public Image m_FaceImg;
     public Image m_NeckImg;
     public Image m_BodyImg;
+    public Image m_TraitorImg;
     public Sprite[] m_HairList;
     public Sprite[] m_FaceList;
     public Sprite[] m_NeckList;
@@ -44,6 +45,16 @@ public class VillainScript : MonoBehaviour {
     public void f_OpenOrCloseElevator(int p_Val) {
         if (m_Destination == "Heaven")              UIAnimController.Instance.f_PlayElevatorAnim(p_Val > 0 ? "Heaven Open" : "Heaven Close");
         else                                        UIAnimController.Instance.f_PlayElevatorAnim(p_Val > 0 ? "Hell Open" : "Hell Close");
+        m_TraitorImg.enabled = false;
+    }
+
+    public void f_IsTraitor() {
+        if (m_IsTraitor) {
+            m_TraitorImg.enabled = true;
+        }
+        else {
+            m_TraitorImg.enabled = false;
+        }
     }
 
 }

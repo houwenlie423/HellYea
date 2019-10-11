@@ -44,4 +44,6 @@ public class UIAnimController : MonoBehaviour {
 
     public void f_MoveVillain(string p_Name) { m_VillainSprAnim.Play(p_Name); }
     public void f_PlayElevatorAnim(string p_Name) { m_ElevatorAnim.Play(p_Name); }
+
+   
 }
